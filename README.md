@@ -1,66 +1,100 @@
-# Phase 2 Project
 
-Another module down--you're almost half way there!
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-campus/master/halfway-there.gif)
+# Housing Analysis for Microsoft
+![Microsoft Headquarters](images\microsoft-headquarters-exterior.jpg)
 
-All that remains in Phase 2 is to put our newfound data science skills to use with a large project! This project should take 20 to 30 hours to complete.
+**Author**: [Mohammed Siddiqui](mailto:saifword@live.com)
 
-## Project Overview
+## **Overview**
+ 
+This project analyzes King County housing data from 2014 and 2015 in order to make recommendations as to which factors most significantly impact the sale price of a house.
 
-For this project, you will use regression modeling to analyze house sales in a northwestern county.
+## **Business Problem**
 
-### The Data
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repo. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+Microsoft now has over 50,000 employees working on its main campus.  We would like to provide our new hires, as well as existing employees in the area with detailed information about procuring housing long-term.
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you ignore some or all of the following features:
+In order to do so, we will need to determine which factors most effect the sale price of a house, which we can accomplish by creating a model to predict prices based on available data.
 
-* date
-* view
-* sqft_above
-* sqft_basement
-* yr_renovated
-* zipcode
-* lat
-* long
-* sqft_living15
-* sqft_lot15
+![map](images\bing_map.png)
 
-### Business Problem
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+## **Data**
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+The main source of data we will work with is the King County Housing dataset.
+    kc_house_data.csv
 
-## Deliverables
+In order to perform some feature engineering, we have used 2018 data from census.gov to get the median household income for each Zipcode
+    ZIP_codes_2018.xls
 
-There are three deliverables for this project:
+## **Methods**
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+For the purposes outlined above, we will use a variety of methods and modules:
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+* Numpy
+* Scipy
+* Pandas
+* Matplotlib
+* Seaborn
+* Statsmodels
+* Sklearn
 
-### Key Points
+## **Results**
 
-* **Your deliverables should explicitly address each step of the data science process.** Refer to [the Data Science Process lesson](https://github.com/learn-co-curriculum/dsc-data-science-processes) from Topic 19 for more information about process models you can use.
+### **Living Area**
+As the living area of a house increases. So does the price.
 
-* **Your Jupyter Notebook should demonstrate an iterative approach to modeling.** This means that you begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. After you finish refining your models, you should provide 1-3 paragraphs discussing your final model - this should include interpreting at least 3 important parameter estimates or statistics.
+![sqft price](images\sqft_price.png)
 
-* **Based on the results of your models, your notebook and presentation should discuss at least two features that have strong relationships with housing prices.**
+### **Location**
+The location of a house, particularly, proximity to our Redmond Campus significantly increases price.
 
-## Getting Started
+![location price](images\location_price.png)
 
-Start on this project by forking and cloning [this project repository](https://github.com/learn-co-curriculum/dsc-phase-2-project) to get a local copy of the dataset.
+### **Waterfront**
 
-We recommend structuring your project repository similar to the structure in [the Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template). You can do this either by creating a new fork of that repository to work in or by building a new repository from scratch that mimics that structure.
+Houses with a waterfront view attract a much higher price.
 
-## Project Submission and Review
+![waterfront](images\waterfront_price.png)
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+### **Quality**
 
-## Summary
+The quality of the house itself (its grade) makes a big impact.  This is especially true of houses with a grade above 11.
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+![grade_price](images\grade_price.png)
+
+
+## **Conclusions about Model**
+
+* We have a model that has an Coefficient of Determination(R-squared) value of 0.812 which indicates that our model can explain 81.2% of all vatiation in the data around the mean. This is a bit higher than I had expected at the start of the project, but performing feature engineering on the latitude and zipcode columns appears to have helped.
+
+* With a Mean Squared Error of around 85,000, that means our predicted price is, on average, 85,000 off from our mean of approximately 518,500. While that number doesn't look too bad our Root Mean Squared Error is around 130,000 which means that our model is being heavily penalized for predictions that are very far off the actual price.
+
+* An explanation for that discrepancy might be the distribution of our residuals. While the distribution is has a normal shape, the tails are heavy which indicates that we have some predictions that are inaccurate by large margins. This requires further analysis as the residual plot could be improved by adding more features, using a different method than OLS to judge our model, or do more feature engineering.
+
+## **Next Steps**
+
+Our model could possibly benefit from the following steps:
+
+* The data we were provided is at least 6 years old which makes it pretty outdated. Acquiring a more recent dataset would help make the findings more relevant to the present.
+
+* We should be able to get a lot more out of the location data. I would like to make a gradient of the price with the latitude/longitude as the x/y axis. We can use this gradient to give weighted values to specific coordinates.
+
+* The most obvious next step is to try out new modeling techniques. While linear regression is a good start, there are many other techniques that I believe could help make better predictions. Of particular insterest to me in this context are Polynomial Regression and Weighted Least Squares.
+
+## **For More Information**
+
+See the full analysis in the [Jupyter Notebook](kings_c_housing.ipynb) or review this [presentation](kc_housing_pres.pdf).
+
+For additional info, I can be reached at  at [saifword@live.com](mailto:saifword@live.com)
+
+
+## Repository Structure
+
+```
+├── data
+├── images
+├── README.md
+├── kc_housing_pres.pdf
+└── kings_c_housing.ipynb
+```
