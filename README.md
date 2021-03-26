@@ -88,6 +88,7 @@ See the full analysis in the [Jupyter Notebook](kings_c_housing.ipynb) or review
 
 For additional info, I can be reached at  at [saifword@live.com](mailto:saifword@live.com)
 
+Having trouble loading the notebook? [Jupyter Nbviewer link](https://nbviewer.jupyter.org/github/saifword/King_County_Housing/blob/main/kings_c_housing.ipynb)
 
 ## Repository Structure
 
