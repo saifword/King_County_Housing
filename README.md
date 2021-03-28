@@ -66,11 +66,11 @@ The quality of the house itself (its grade) makes a big impact.  This is especia
 
 ## **Conclusions about Model**
 
-* We have a model that has an Coefficient of Determination(R-squared) value of 0.812 which indicates that our model can explain 81.2% of all vatiation in the data around the mean. This is a bit higher than I had expected at the start of the project, but performing feature engineering on the latitude and zipcode columns appears to have helped.
+* We have a model that has an Coefficient of Determination(R-squared) value of 0.825 which indicates that our model can explain 82.5% of all vatiation in the data around the mean.  This is a bit higher than I had expected at the start of the project, but performing feature engineering on the latitude and zipcode columns appears to have helped.
 
-* With a Mean Squared Error of around 85,000, that means our predicted price is, on average, 85,000 off from our mean of approximately 518,500. While that number doesn't look too bad our, Root Mean Squared Error is around 130,000 which means that our model is being heavily penalized for predictions that are very far off the actual price.
+* With a Mean Squared Error of around 81,500 USD, that means our predicted price is, on average, 81,500 USD off from our mean of approximately 518,500 USD. While that number doesn't look too bad our Root Mean Squared Error is around 124,000 USD which means that our model is being heavily penalized for predictions that are very far off the actual price.
 
-* An explanation for that discrepancy might be the distribution of our residuals. While the distribution is has a normal shape, the tails are heavy which indicates that we have some predictions that are inaccurate by large margins. This requires further analysis as the residual plot could be improved by adding more features, using a different method than OLS to judge our model, or do more feature engineering.
+* An explanation for that discrepancy might be the distribution of our residuals.  While the distribution is has a normal shape, the tails are heavy which indicates that we have some predictions that are inaccurate by large margins.  This requires further analysis as the residual plot could be improved by adding more features, using a different method than OLS to judge our model, or do more feature engineering. 
 
 ## **Next Steps**
 
